@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Destination {
+    String location;
+    String date;
+    double budget;
+
+    public Destination(String location, String date, double budget) {
+        this.location = location;
+        this.date = date;
+        this.budget = budget;
+    }
+
+    public void display() {
+        System.out.println("Location: " + location + ", Date: " + date + ", Budget: $" + budget);
+    }
+}
+
+public class Tripplan {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Destination> destinations = new ArrayList<>();
+
+        System.out.println("Welcome to the Travel Itinerary Planner!");
+
+        while (true) {
+            System.out.print("Enter destination (or type 'exit' to finish): ");
+            String location = scanner.nextLine();
+            if (location.equalsIgnoreCase("exit")) {
+                break;
+            }
+
+            System.out.print("Enter date of travel (e.g., 2024-12-25): ");
+            String date = scanner.nextLine();
+
+            System.out.print("Enter estimated budget for this destination: ");
+            double budget = scanner.nextDouble();
+            scanner.nextLine(); // consume newline
+
+            destinations.add(new Destination(location, date, budget));
+            System.out.println("Destination added!\n");
+        }
+
+        System.out.println("\nYour Travel Itinerary:");
+        double totalBudget = 0;
+        for (Destination d : destinations) {
+            d.display();
+            totalBudget += d.budget;
+        }
+
+        System.out.printf("Total estimated budget: $%.2f\n", totalBudget);
+        scanner.close();
+    }
+}
