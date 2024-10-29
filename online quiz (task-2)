@@ -1,0 +1,61 @@
+import java.util.*;
+class banking_application{
+    public static void main(String args[])
+    {
+        double balance=0.0;
+        boolean exit=false;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Welcome to simple Banking Application");
+        while(!exit)
+        {
+            System.out.println("choose an option");
+            System.out.println("1.Deposit");            
+            System.out.println("2.Withdrawal");  
+            System.out.println("3.Balance Enquiry");  
+             System.out.println("4.Exit");            
+            System.out.println("Enter your choice");
+            int choice=sc.nextInt();
+            switch(choice)
+            {
+                case 1:
+                    System.out.println(" Enter the amount you want to Deposit");
+                        double deposit_amount=sc.nextDouble();
+                    if(deposit_amount>0)
+                    {
+                        balance+=deposit_amount;
+                        System.out.println(deposit_amount+" Successfully Deposited");
+                    }
+                    else{
+                        System.out.println("deposit amount should be greater than zero");
+                    }
+                break;
+
+                case 2:
+                    System.out.println("Enter amount to withdraw");
+                    double withdraw_amount=sc.nextDouble();
+                    if(withdraw_amount<=balance)
+                    {
+                        balance-=withdraw_amount;
+                        System.out.println(withdraw_amount+" Successfully Withdrawn");
+                    }
+                    else if(withdraw_amount>balance)
+                    {
+                        System.out.println("Cannot withdraw because of insufficient balance");
+                    }
+                    else{
+                        System.out.println("Amount should be greater than zero");
+                    }
+                break;
+
+                case 3:
+                    System.out.println("Balance available is:"+balance);
+                    break;
+                case 4:
+                    System.out.println("Thank you for using simple bank application!...");
+                    break;
+                default:
+                    System.out.println("Invalid option");
+            }
+        }
+    }
+}
